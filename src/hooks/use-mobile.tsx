@@ -17,3 +17,6 @@ export function useIsMobile() {
 
   return !!isMobile
 }
+
+// 导出别名以兼容现有代码
+export const useMobile = useIsMobile;

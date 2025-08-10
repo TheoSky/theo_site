@@ -1,6 +1,6 @@
 import { CyberCard } from "@/components/tech/cyber-card";
 import { AnimatedBackground } from "@/components/tech/animated-background";
-import wechatQrCode from "@/assets/wechat-qr-code.svg";
+import wechatQrCode from "@/assets/wechat-qr-code.jpg";
 
 const Contact = () => {
   return (

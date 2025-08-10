@@ -5,6 +5,7 @@ import { CyberBadge } from '@/components/ui/cyber-badge';
 import { useAuth } from '@/contexts/auth-context';
 import { Menu, X, Zap, BookOpen, User, Briefcase, Mail, PenTool } from 'lucide-react';
 import { useMobile } from '@/hooks/use-mobile';
+import heroAvatar from '@/assets/hero-avatar.jpg';
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,10 +38,10 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2" onClick={closeMenu}>
-            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-cyber-cyan to-cyber-purple flex items-center justify-center">
-              <Zap className="w-4 h-4 text-background" />
+            <div className="w-8 h-8 rounded-full overflow-hidden">
+              <img src={heroAvatar} alt="杨耸霄" className="w-full h-full object-cover" />
             </div>
-            <span className="font-bold text-lg gradient-text">HoloSpark</span>
+            <span className="font-bold text-lg gradient-text">杨耸霄的个人网站</span>
           </Link>
 
           {/* Desktop Navigation */}

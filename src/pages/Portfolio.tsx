@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Zap, Brain, ArrowRight, Copy, Sparkles, Code, Palette, Globe } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { AnimatedBackground } from '@/components/tech/animated-background'
 import { HeroAvatar } from '@/components/tech/hero-avatar'
 import { CyberCard } from '@/components/tech/cyber-card'
@@ -10,15 +11,16 @@ import heroAvatar from '@/assets/hero-avatar.jpg'
 
 export const Portfolio: React.FC = () => {
   const { toast } = useToast()
+  const navigate = useNavigate()
   const [copiedEmail, setCopiedEmail] = useState(false)
 
   const handleCopyEmail = async () => {
     try {
-      await navigator.clipboard.writeText('contact@techportfolio.dev')
+      await navigator.clipboard.writeText('yangsongxiao92@gmail.com')
       setCopiedEmail(true)
       toast({
         title: "Email copied!",
-        description: "contact@techportfolio.dev has been copied to clipboard",
+        description: "yangsongxiao92@gmail.com has been copied to clipboard",
       })
       setTimeout(() => setCopiedEmail(false), 2000)
     } catch (err) {
@@ -28,6 +30,22 @@ export const Portfolio: React.FC = () => {
         variant: "destructive"
       })
     }
+  }
+
+  const handleGitHubClick = () => {
+    window.open('https://github.com/TheoSky', '_blank')
+  }
+
+  const handleTwitterClick = () => {
+    window.open('https://x.com/songxiao_y25087', '_blank')
+  }
+
+  const handleWeChatClick = () => {
+    navigate('/contact')
+  }
+
+  const handlePortfolioClick = () => {
+    navigate('/')
   }
 
   return (
@@ -139,16 +157,32 @@ export const Portfolio: React.FC = () => {
 
           {/* Social Links */}
           <div className="mt-16 flex justify-center gap-6">
-            <CyberBadge variant="gradient" className="cursor-pointer hover:scale-105 transition-transform">
+            <CyberBadge 
+              variant="gradient" 
+              className="cursor-pointer hover:scale-105 transition-transform"
+              onClick={handleGitHubClick}
+            >
               GitHub
             </CyberBadge>
-            <CyberBadge variant="gradient" className="cursor-pointer hover:scale-105 transition-transform">
-              LinkedIn
+            <CyberBadge 
+              variant="gradient" 
+              className="cursor-pointer hover:scale-105 transition-transform"
+              onClick={handleWeChatClick}
+            >
+              WeChat
             </CyberBadge>
-            <CyberBadge variant="gradient" className="cursor-pointer hover:scale-105 transition-transform">
+            <CyberBadge 
+              variant="gradient" 
+              className="cursor-pointer hover:scale-105 transition-transform"
+              onClick={handleTwitterClick}
+            >
               Twitter
             </CyberBadge>
-            <CyberBadge variant="gradient" className="cursor-pointer hover:scale-105 transition-transform">
+            <CyberBadge 
+              variant="gradient" 
+              className="cursor-pointer hover:scale-105 transition-transform"
+              onClick={handlePortfolioClick}
+            >
               Portfolio
             </CyberBadge>
           </div>

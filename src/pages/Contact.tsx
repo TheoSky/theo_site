@@ -46,12 +46,12 @@ const Contact = () => {
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             <CyberCard className="p-6 text-left">
               <h3 className="text-lg font-semibold mb-2 text-cyber-cyan">邮箱联系</h3>
-              <p className="text-muted-foreground">theo@example.com</p>
+              <p className="text-muted-foreground">yangsongxiao92@gmail.com</p>
             </CyberCard>
             
             <CyberCard className="p-6 text-left">
               <h3 className="text-lg font-semibold mb-2 text-cyber-purple">社交媒体</h3>
-              <p className="text-muted-foreground">关注我的最新动态</p>
+              <p className="text-muted-foreground">https://x.com/songxiao_y25087</p>
             </CyberCard>
           </div>
         </div>

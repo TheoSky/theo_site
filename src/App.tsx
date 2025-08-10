@@ -15,6 +15,7 @@ import BlogPost from "./pages/BlogPost";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import BlogEditor from "./pages/BlogEditor";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               
               {/* Protected Admin Routes */}

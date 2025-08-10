@@ -48,6 +48,10 @@ export const Portfolio: React.FC = () => {
     navigate('/')
   }
 
+  const handleExploreWorkClick = () => {
+    navigate('/projects')
+  }
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Animated Background */}
@@ -93,9 +97,7 @@ export const Portfolio: React.FC = () => {
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Where <span className="text-cyber-cyan font-semibold">AI Innovation</span> meets{' '}
-            <span className="text-cyber-purple font-semibold">Human Creativity</span> to craft{' '}
-            <span className="text-cyber-pink font-semibold">Extraordinary Solutions</span>
+            探索、创造、分享——欢迎来到我的数字家园
           </p>
 
           {/* Info Cards */}
@@ -105,7 +107,7 @@ export const Portfolio: React.FC = () => {
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-cyber-cyan to-cyber-purple flex items-center justify-center">
                   <Code className="w-4 h-4 text-background" />
                 </div>
-                <h3 className="font-semibold text-foreground">Full-Stack Developer</h3>
+                <h3 className="font-semibold text-foreground">Full-Stack Developer <span className="text-xs text-muted-foreground">(dream to be)</span></h3>
               </div>
               <p className="text-sm text-muted-foreground">
                 Expertise in React, TypeScript, Node.js, and cutting-edge web technologies
@@ -117,7 +119,7 @@ export const Portfolio: React.FC = () => {
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-cyber-purple to-cyber-pink flex items-center justify-center">
                   <Palette className="w-4 h-4 text-background" />
                 </div>
-                <h3 className="font-semibold text-foreground">UI/UX Designer</h3>
+                <h3 className="font-semibold text-foreground">UI/UX Designer <span className="text-xs text-muted-foreground">(maybe)</span></h3>
               </div>
               <p className="text-sm text-muted-foreground">
                 Creating intuitive interfaces with modern design principles and user-centered approach
@@ -129,7 +131,7 @@ export const Portfolio: React.FC = () => {
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-cyber-pink to-cyber-cyan flex items-center justify-center">
                   <Globe className="w-4 h-4 text-background" />
                 </div>
-                <h3 className="font-semibold text-foreground">Digital Strategist</h3>
+                <h3 className="font-semibold text-foreground">Digital Strategist <span className="text-xs text-muted-foreground">(want to be)</span></h3>
               </div>
               <p className="text-sm text-muted-foreground">
                 Transforming business ideas into scalable digital solutions and products
@@ -139,7 +141,12 @@ export const Portfolio: React.FC = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <CyberButton variant="hero" size="xl" className="group">
+            <CyberButton 
+              variant="hero" 
+              size="xl" 
+              className="group"
+              onClick={handleExploreWorkClick}
+            >
               Explore My Work
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </CyberButton>

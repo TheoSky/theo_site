@@ -16,8 +16,11 @@ const Contact = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyber-cyan via-cyber-purple to-cyber-pink bg-clip-text text-transparent">
               联系我
             </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-4">
+            我是Theo，一个没有代码基础的硬件工程，这是一个纯vibe coding的个人网站，制作的过程让我兴奋。
+          </p>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-              我是Theo，欢迎交个朋友，分享你我的故事
+              AI浪潮滚滚而来，来了就是缘分，欢迎交个朋友，分享你我的故事。
             </p>
           </div>
 

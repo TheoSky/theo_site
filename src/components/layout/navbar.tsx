@@ -41,7 +41,7 @@ export const Navbar: React.FC = () => {
             <div className="w-8 h-8 rounded-full overflow-hidden">
               <img src={heroAvatar} alt="杨耸霄" className="w-full h-full object-cover" />
             </div>
-            <span className="font-bold text-lg gradient-text">杨耸霄的个人网站</span>
+            <span className="font-bold text-lg gradient-text">Theo's website</span>
           </Link>
 
           {/* Desktop Navigation */}

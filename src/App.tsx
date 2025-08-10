@@ -16,6 +16,7 @@ import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import BlogEditor from "./pages/BlogEditor";
 import Contact from "./pages/Contact";
+import Projects from "./pages/Projects";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
             <Routes>
               {/* Public Routes */}
               <Route path="/" element={<Index />} />
+              <Route path="/projects" element={<Projects />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />

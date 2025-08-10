@@ -1,4 +1,4 @@
-import { db } from './firebase';
+import { db, hasFirebaseConfig } from './firebase';
 import { collection, doc, getDoc, getDocs, addDoc, updateDoc, deleteDoc, query, where, orderBy } from 'firebase/firestore';
 import { BlogPost, BlogPostFormData, BlogStatus } from '@/types/blog';
 
@@ -6,6 +6,10 @@ const BLOG_COLLECTION = 'blog_posts';
 
 // Get all blog posts
 export async function getAllBlogPosts() {
+  if (!hasFirebaseConfig || !db) {
+    return [];
+  }
+  
   const blogRef = collection(db, BLOG_COLLECTION);
   const q = query(blogRef, orderBy('publishDate', 'desc'));
   const snapshot = await getDocs(q);
@@ -18,6 +22,10 @@ export async function getAllBlogPosts() {
 
 // Get published blog posts
 export async function getPublishedBlogPosts() {
+  if (!hasFirebaseConfig || !db) {
+    return [];
+  }
+  
   const blogRef = collection(db, BLOG_COLLECTION);
   const q = query(
     blogRef, 
@@ -34,6 +42,10 @@ export async function getPublishedBlogPosts() {
 
 // Get blog post by ID
 export async function getBlogPostById(id: string) {
+  if (!hasFirebaseConfig || !db) {
+    return null;
+  }
+  
   const docRef = doc(db, BLOG_COLLECTION, id);
   const docSnap = await getDoc(docRef);
   
@@ -49,6 +61,10 @@ export async function getBlogPostById(id: string) {
 
 // Get blog post by slug
 export async function getBlogPostBySlug(slug: string) {
+  if (!hasFirebaseConfig || !db) {
+    return null;
+  }
+  
   const blogRef = collection(db, BLOG_COLLECTION);
   const q = query(blogRef, where('slug', '==', slug));
   const snapshot = await getDocs(q);
@@ -68,6 +84,10 @@ export async function getBlogPostBySlug(slug: string) {
 
 // Create a new blog post
 export async function createBlogPost(postData: BlogPostFormData) {
+  if (!hasFirebaseConfig || !db) {
+    throw new Error('Firebase is not configured');
+  }
+  
   const newPost = {
     title: postData.title,
     content: postData.content,
@@ -90,6 +110,10 @@ export async function createBlogPost(postData: BlogPostFormData) {
 
 // Update a blog post
 export async function updateBlogPost(id: string, postData: BlogPostFormData) {
+  if (!hasFirebaseConfig || !db) {
+    throw new Error('Firebase is not configured');
+  }
+  
   const docRef = doc(db, BLOG_COLLECTION, id);
   const docSnap = await getDoc(docRef);
   
@@ -121,6 +145,10 @@ export async function updateBlogPost(id: string, postData: BlogPostFormData) {
 
 // Delete a blog post
 export async function deleteBlogPost(id: string) {
+  if (!hasFirebaseConfig || !db) {
+    throw new Error('Firebase is not configured');
+  }
+  
   const docRef = doc(db, BLOG_COLLECTION, id);
   const docSnap = await getDoc(docRef);
   
@@ -135,6 +163,10 @@ export async function deleteBlogPost(id: string) {
 
 // Check if slug is unique
 export async function isSlugUnique(slug: string, excludeId?: string) {
+  if (!hasFirebaseConfig || !db) {
+    return true; // Allow any slug when Firebase is not configured
+  }
+  
   const blogRef = collection(db, BLOG_COLLECTION);
   const q = query(blogRef, where('slug', '==', slug));
   const snapshot = await getDocs(q);
@@ -153,6 +185,10 @@ export async function isSlugUnique(slug: string, excludeId?: string) {
 
 // Update blog post status
 export async function updateBlogStatus(id: string, status: BlogStatus) {
+  if (!hasFirebaseConfig || !db) {
+    throw new Error('Firebase is not configured');
+  }
+  
   const docRef = doc(db, BLOG_COLLECTION, id);
   await updateDoc(docRef, { 
     status,

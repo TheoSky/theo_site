@@ -3,14 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { CyberBadge } from '@/components/ui/cyber-badge';
 import { useAuth } from '@/contexts/auth-context';
-import { Menu, X, Zap, BookOpen, User, Briefcase, Mail, PenTool } from 'lucide-react';
+import { Menu, X, Zap, BookOpen, User, Briefcase, Mail, PenTool, LogIn, LogOut } from 'lucide-react';
 import { useMobile } from '@/hooks/use-mobile';
 import heroAvatar from '@/assets/hero-avatar.jpg';
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const isMobile = useMobile();
 
   const toggleMenu = () => {
@@ -58,12 +58,30 @@ export const Navbar: React.FC = () => {
                 </Link>
               ))}
 
-              {user && (
-                <Link to="/admin">
-                  <CyberBadge variant="tech" className="flex items-center gap-1 cursor-pointer">
-                    <PenTool className="w-3 h-3" />
-                    管理博客
-                  </CyberBadge>
+              {user ? (
+                <div className="flex items-center gap-4">
+                  <Link to="/admin">
+                    <CyberBadge variant="tech" className="flex items-center gap-1 cursor-pointer">
+                      <PenTool className="w-3 h-3" />
+                      管理博客
+                    </CyberBadge>
+                  </Link>
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    onClick={logout}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    <LogOut className="w-4 h-4 mr-1" />
+                    退出
+                  </Button>
+                </div>
+              ) : (
+                <Link to="/login">
+                  <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                    <LogIn className="w-4 h-4 mr-1" />
+                    登录
+                  </Button>
                 </Link>
               )}
             </div>
@@ -99,14 +117,34 @@ export const Navbar: React.FC = () => {
               </Link>
             ))}
 
-            {user && (
+            {user ? (
+              <>
+                <Link 
+                  to="/admin"
+                  className="flex items-center gap-2 py-2 px-3 rounded-md bg-gradient-to-r from-cyber-cyan/10 to-cyber-purple/10 text-cyber-cyan"
+                  onClick={closeMenu}
+                >
+                  <PenTool className="w-4 h-4" />
+                  管理博客
+                </Link>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => { logout(); closeMenu(); }}
+                  className="justify-start text-muted-foreground hover:text-foreground w-full"
+                >
+                  <LogOut className="w-4 h-4 mr-2" />
+                  退出
+                </Button>
+              </>
+            ) : (
               <Link 
-                to="/admin"
-                className="flex items-center gap-2 py-2 px-3 rounded-md bg-gradient-to-r from-cyber-cyan/10 to-cyber-purple/10 text-cyber-cyan"
+                to="/login"
+                className="flex items-center gap-2 py-2 px-3 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground"
                 onClick={closeMenu}
               >
-                <PenTool className="w-4 h-4" />
-                管理博客
+                <LogIn className="w-4 h-4" />
+                登录
               </Link>
             )}
           </div>

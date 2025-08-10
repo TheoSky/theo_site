@@ -11,13 +11,19 @@ export async function getAllBlogPosts() {
   }
   
   const blogRef = collection(db, BLOG_COLLECTION);
-  const q = query(blogRef, orderBy('publishDate', 'desc'));
-  const snapshot = await getDocs(q);
+  const snapshot = await getDocs(blogRef);
   
-  return snapshot.docs.map(doc => ({
+  const posts = snapshot.docs.map(doc => ({
     id: doc.id,
     ...doc.data()
   })) as BlogPost[];
+  
+  // Sort by publishDate in descending order on client side
+  return posts.sort((a, b) => {
+    const dateA = new Date(a.publishDate).getTime();
+    const dateB = new Date(b.publishDate).getTime();
+    return dateB - dateA;
+  });
 }
 
 // Get published blog posts
@@ -27,17 +33,20 @@ export async function getPublishedBlogPosts() {
   }
   
   const blogRef = collection(db, BLOG_COLLECTION);
-  const q = query(
-    blogRef, 
-    where('status', '==', 'published'),
-    orderBy('publishDate', 'desc')
-  );
+  const q = query(blogRef, where('status', '==', 'published'));
   const snapshot = await getDocs(q);
   
-  return snapshot.docs.map(doc => ({
+  const posts = snapshot.docs.map(doc => ({
     id: doc.id,
     ...doc.data()
   })) as BlogPost[];
+  
+  // Sort by publishDate in descending order on client side
+  return posts.sort((a, b) => {
+    const dateA = new Date(a.publishDate).getTime();
+    const dateB = new Date(b.publishDate).getTime();
+    return dateB - dateA;
+  });
 }
 
 // Get blog post by ID

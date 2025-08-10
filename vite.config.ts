@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
-  base: process.env.NODE_ENV === 'production' ? '/holo-spark/' : '/',
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Zap } from 'lucide-react';
+import { Zap, Home } from 'lucide-react';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -103,6 +103,17 @@ const Login: React.FC = () => {
             )}
           </Button>
         </form>
+        
+        <div className="mt-6 text-center">
+          <Button 
+            variant="outline" 
+            onClick={() => navigate('/')}
+            className="w-full border-cyber-cyan/20 hover:border-cyber-cyan/50 hover:bg-cyber-cyan/10 text-foreground"
+          >
+            <Home className="w-4 h-4 mr-2" />
+            回到首页
+          </Button>
+        </div>
       </Card>
     </div>
   );

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAllBlogPosts, deleteBlogPost, updateBlogStatus } from '@/lib/blog-service';
 import { BlogPost, BlogStatus } from '@/types/blog';
-import { signOut } from '@/lib/auth-service';
 import { useAuth } from '@/contexts/auth-context';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -35,7 +34,9 @@ import {
   Trash, 
   FileEdit,
   CheckCircle,
-  Clock
+  Clock,
+  Home,
+  BarChart3
 } from 'lucide-react';
 
 const Admin: React.FC = () => {
@@ -43,7 +44,7 @@ const Admin: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [deletePostId, setDeletePostId] = useState<string | null>(null);
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -65,7 +66,7 @@ const Admin: React.FC = () => {
 
   const handleSignOut = async () => {
     try {
-      await signOut();
+      await logout();
       navigate('/login');
     } catch (error) {
       console.error('Error signing out:', error);
@@ -127,7 +128,23 @@ const Admin: React.FC = () => {
             <h1 className="text-3xl font-bold gradient-text">博客管理</h1>
             <p className="text-muted-foreground mt-1">管理您的博客文章</p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <Button 
+              variant="outline" 
+              onClick={() => navigate('/')}
+              className="flex items-center gap-2 hover:bg-cyber-cyan/10 hover:border-cyber-cyan/50"
+            >
+              <Home className="w-4 h-4" />
+              回到首页
+            </Button>
+            <Button 
+              variant="outline" 
+              onClick={() => navigate('/analytics')}
+              className="flex items-center gap-2 hover:bg-cyber-purple/10 hover:border-cyber-purple/50"
+            >
+              <BarChart3 className="w-4 h-4" />
+              访问统计
+            </Button>
             <Button 
               variant="outline" 
               onClick={handleSignOut}

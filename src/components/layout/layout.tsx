@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from './navbar';
 import { useLocation } from 'react-router-dom';
+import VisitorStats from '../ui/visitor-stats';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -22,8 +23,15 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       </main>
       {showNavbar && (
         <footer className="bg-background border-t border-cyber-cyan/20 py-6">
-          <div className="container mx-auto px-4 text-center text-muted-foreground">
-            <p>© {new Date().getFullYear()} HoloSpark. All rights reserved.</p>
+          <div className="container mx-auto px-4 text-center">
+            {/* 访问统计 */}
+            <div className="mb-4">
+              <VisitorStats />
+            </div>
+            {/* 版权信息 */}
+            <div className="text-muted-foreground">
+              <p>© {new Date().getFullYear()} HoloSpark. All rights reserved.</p>
+            </div>
           </div>
         </footer>
       )}

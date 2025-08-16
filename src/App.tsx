@@ -17,6 +17,7 @@ import Admin from "./pages/Admin";
 import BlogEditor from "./pages/BlogEditor";
 import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
+import Analytics from "./pages/Analytics";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,11 @@ const App = () => (
               <Route path="/admin/edit/:id" element={
                 <ProtectedRoute>
                   <BlogEditor />
+                </ProtectedRoute>
+              } />
+              <Route path="/analytics" element={
+                <ProtectedRoute>
+                  <Analytics />
                 </ProtectedRoute>
               } />
               

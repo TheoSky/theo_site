@@ -17,7 +17,7 @@ const Contact = () => {
               联系我
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-4">
-            我是Theo，一个没有代码基础的硬件工程，这是一个纯vibe coding的个人网站，制作的过程让我兴奋。
+            我是Theo，一个没有代码基础的硬件工程师，这是一个纯vibe coding的个人网站，制作的过程让我兴奋。
           </p>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
               AI浪潮滚滚而来，来了就是缘分，欢迎交个朋友，分享你我的故事。
@@ -52,10 +52,7 @@ const Contact = () => {
               <p className="text-muted-foreground">yangsongxiao92@gmail.com</p>
             </CyberCard>
             
-            <CyberCard className="p-6 text-left">
-              <h3 className="text-lg font-semibold mb-2 text-cyber-purple">社交媒体</h3>
-              <p className="text-muted-foreground">https://x.com/songxiao_y25087</p>
-            </CyberCard>
+
           </div>
         </div>
       </div>

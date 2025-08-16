@@ -41,6 +41,8 @@ export const Portfolio: React.FC = () => {
   }
 
   const handleWeChatClick = () => {
+    // 先滚动到顶部，然后跳转
+    window.scrollTo({ top: 0, behavior: 'instant' })
     navigate('/contact')
   }
 
